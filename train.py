@@ -1,5 +1,6 @@
 from dataset import load_data
 from model import convnet
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 model = convnet()
 (x_data, y_data) = load_data()
@@ -20,7 +21,7 @@ save_callback = ModelCheckpoint(
 model.fit(
   x_data, y_data,
   epochs=100,
-  callback[save_callback],
+  callbacks=[save_callback],
   validation_split=0.05,
   shuffle=True
 )
